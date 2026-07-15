@@ -131,6 +131,7 @@ cargo run
 ---
 
 # Project Structure / ディレクトリ構成
+# schedule / 予定です
 
 ```text
 spaceship/
