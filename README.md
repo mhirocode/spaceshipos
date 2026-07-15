@@ -231,6 +231,13 @@ spaceship/
 * Reliability over complexity
 * Safety-first development
 * Incremental implementation with small Git commits
+* マイクロカーネル指向アーキテクチャ
+* モジュール式設計
+* ハードウェア抽象化
+* ティック駆動型シミュレーション
+* 複雑さよりも信頼性を重視
+* 安全性を最優先した開発
+* 小規模なGitコミットによる段階的な実装
 
 ---
 
