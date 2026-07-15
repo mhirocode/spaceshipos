@@ -223,7 +223,7 @@ spaceship/
 ---
 
 # Design Principles / 設計方針
-
+* To complete it as simply as possible
 * Microkernel-oriented architecture
 * Modular design
 * Hardware abstraction
@@ -231,6 +231,7 @@ spaceship/
 * Reliability over complexity
 * Safety-first development
 * Incremental implementation with small Git commits
+* できるだけシンプルに完成できるように
 * マイクロカーネル指向アーキテクチャ
 * モジュール式設計
 * ハードウェア抽象化
