@@ -158,4 +158,4 @@ Contributions are welcome in both Japanese and English.
 
 💬 Join our Discord community!
 
-https://discord.gg/qz4uyn2nH
+https://discord.gg/cszX2vgNCS
