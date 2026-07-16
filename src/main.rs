@@ -1,19 +1,19 @@
-mod tick;
+mod scheduler;
+mod task;
+mod flight;
 
-use tick::Tick;
-use std::{thread, time::Duration};
+use scheduler::Scheduler;
+use flight::FlightComputer;
 
 fn main() {
-    println!("======================================");
-    println!("         ShipOS Boot Sequence");
-    println!("======================================");
-    println!("Initializing spacecraft systems...");
-    println!("System ready.\n");
+    println!("ShipOS Boot Sequence");
 
-    let mut tick = Tick::new();
+    let mut scheduler = Scheduler::new();
 
-    loop {
-        tick.next();
-        thread::sleep(Duration::from_millis(1000));
+    scheduler.add_task(FlightComputer::new());
+
+    for tick in 1..=5 {
+        println!("\nTick {}", tick);
+        scheduler.update();
     }
 }
