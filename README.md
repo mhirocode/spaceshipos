@@ -1,58 +1,40 @@
 # ShipOS – Spaceship Cargo Operating System
 
-**日本語 / Japanese**
+## 日本語 / Japanese
 
-ShipOS は、Rustで開発する宇宙貨物船向けオペレーティングシステム（OS）の研究・シミュレーションプロジェクトです。
+ShipOS は、Rustで開発する宇宙貨物船向けソフトウェアの研究・シミュレーションプロジェクトです。
 
-本プロジェクトでは、宇宙貨物船をPC上でエミュレーションし、その上で動作する独自OSを段階的に設計・実装します。
+本プロジェクトでは、仮想的な宇宙船ハードウェア上で動作するソフトウェアを実装し、実際の宇宙船コンピュータを参考にしたシンプルなシステムアーキテクチャを設計・検証します。
 
-ゲーム開発ではなく、実際の宇宙船コンピュータを参考にしたソフトウェアアーキテクチャ、リアルタイム処理、ハードウェア抽象化、安全性および保守性を重視した設計を目指しています。
-
-現段階ではシミュレータとして開発を進めていますが、将来的には実機へ応用可能なソフトウェアアーキテクチャの研究プラットフォームとなることを目標としています。
+ゲーム開発ではなく、モジュール設計、ハードウェア抽象化、リアルタイム処理を中心としたソフトウェア開発を目的としています。
 
 ---
 
-**English**
+## English
 
-ShipOS is a research project to develop a Rust-based operating system for autonomous cargo spacecraft.
+ShipOS is a Rust-based research and simulation project for spacecraft software.
 
-The project emulates an entire spacecraft on a PC and develops an operating system that runs on top of the simulated hardware.
+The project develops software running on virtual spacecraft hardware to explore system architectures inspired by real spacecraft computers.
 
-Rather than being a game, ShipOS focuses on software architecture inspired by real spacecraft engineering, emphasizing modularity, hardware abstraction, fault tolerance, maintainability, and safety.
-
-The current implementation is a simulator, with the long-term vision of becoming a research platform for spacecraft software architectures.
+Rather than building a game, ShipOS focuses on modular design, hardware abstraction, and real-time processing.
 
 ---
 
 # Project Goals / プロジェクトの目標
 
-* Develop a modular spacecraft operating system
+### English
 
-* Emulate spacecraft hardware and onboard computers
+- Develop a modular spacecraft software architecture
+- Emulate basic spacecraft hardware
+- Research hardware abstraction
+- Build a simple real-time simulation
 
-* Research microkernel-oriented software architecture
+### 日本語
 
-* Design reliable and fault-tolerant spacecraft software
-
-* Implement realistic spacecraft simulation
-
-* Separate hardware, kernel, and application layers
-
-* Build a platform for future autonomous spacecraft research
-
-* 宇宙貨物船向けOSの開発
-
-* 宇宙船ハードウェアおよび搭載コンピュータのエミュレーション
-
-* マイクロカーネル志向のOS設計
-
-* 高信頼・耐故障システムの研究
-
-* 現実的な宇宙船シミュレーション
-
-* ハードウェア・カーネル・アプリケーションの分離
-
-* 将来の自律宇宙船研究プラットフォームの構築
+- モジュール化された宇宙船ソフトウェアの開発
+- 基本的な宇宙船ハードウェアのエミュレーション
+- ハードウェア抽象化の研究
+- シンプルなリアルタイムシミュレーションの構築
 
 ---
 
@@ -62,55 +44,39 @@ The current implementation is a simulator, with the long-term vision of becoming
 Space Simulator
         │
         ▼
-Physics Engine
-        │
-        ▼
 Virtual Hardware
         │
         ▼
 ShipOS Kernel
         │
         ▼
-Userspace Services
-        │
+Services
         ├── Flight Computer
-        ├── Navigation Computer
-        ├── Cargo Computer
-        ├── Power Computer
-        ├── Communication Computer
-        └── AI Computer
+        ├── Navigation
+        └── Cargo Management
 ```
 
-The operating system interacts only with the Virtual Hardware layer, allowing the physics simulator and onboard software to evolve independently.
+The operating system communicates only with the Virtual Hardware layer, allowing the simulator and software to evolve independently.
 
-OSはVirtual Hardware層のみを認識し、物理シミュレータとは分離された構造を採用します。
+OSは Virtual Hardware 層のみを認識し、シミュレータとソフトウェアを独立して開発できる構成を採用します。
 
 ---
 
 # Planned Features / 主な機能
 
-* 🚀 Flight computer
-* 📦 Cargo management
-* ⚡ Power management
-* 🔥 Propulsion control
-* 🛰 Navigation system
-* 📡 Sensor simulation
-* 🌌 Orbital mechanics
-* 🤖 Autonomous flight
-* 🛡 Fault detection and recovery
-* 📝 Flight logging
-* 🔒 System monitoring
-* 🔄 Inter-process communication (IPC)
-* ⏱ Tick-based scheduler
+- 🚀 Flight Computer
+- 🛰 Navigation
+- 📦 Cargo Management
+- 🔄 Inter-process Communication (IPC)
+- ⏱ Tick-based Scheduler
 
 ---
 
 # Technology Stack / 技術構成
 
-* Rust (main language)
-* Cargo
-* Python (development tools and testing)
-* C / Assembly (future bootloader experiments)
+- Rust
+- Cargo
+- Python (development tools)
 
 ---
 
@@ -131,44 +97,25 @@ cargo run
 ---
 
 # Project Structure / ディレクトリ構成
-# schedule / 予定です
 
 ```text
 spaceship/
 ├── Cargo.toml
 ├── README.md
 ├── LICENSE
+│
 ├── docs/
 │   ├── architecture.md
 │   ├── requirements.md
 │   └── roadmap.md
 │
-├── src/
-│   ├── main.rs
-│   ├── kernel/
-│   │   ├── scheduler.rs
-│   │   ├── clock.rs
-│   │   └── ipc.rs
-│   │
-│   ├── sim/
-│   │   ├── physics.rs
-│   │   ├── world.rs
-│   │   └── time.rs
-│   │
-│   ├── hal/
-│   │   ├── thruster.rs
-│   │   ├── battery.rs
-│   │   └── sensor.rs
-│   │
-│   ├── services/
-│   │   ├── flight.rs
-│   │   ├── navigation.rs
-│   │   ├── cargo.rs
-│   │   ├── power.rs
-│   │   ├── communication.rs
-│   │   └── ai.rs
-│   │
-│   └── common/
+└── src/
+    ├── main.rs
+    ├── kernel/
+    ├── sim/
+    ├── hal/
+    ├── services/
+    └── common/
 ```
 
 ---
@@ -177,68 +124,47 @@ spaceship/
 
 ## Phase 1 – Foundation
 
-* [x] Git repository
-* [x] Rust project
-* [x] Initial ship structure
-* [ ] Documentation
-* [ ] Simulation clock
-* [ ] Tick system
+- [x] Git repository
+- [x] Rust project
+- [ ] Documentation
+- [ ] Simulation clock
+- [ ] Tick scheduler
 
-## Phase 2 – Kernel
+## Phase 2 – Core System
 
-* [ ] Scheduler
-* [ ] Computer trait
-* [ ] IPC
-* [ ] Service framework
+- [ ] Virtual hardware
+- [ ] Flight computer
+- [ ] Navigation
+- [ ] IPC
 
-## Phase 3 – Virtual Hardware
+## Phase 3 – Expansion
 
-* [ ] Thruster
-* [ ] Battery
-* [ ] Sensors
-* [ ] Cargo hold
-
-## Phase 4 – Physics
-
-* [ ] Orbital mechanics
-* [ ] Fuel consumption
-* [ ] Attitude control
-* [ ] Collision detection
-
-## Phase 5 – Flight Systems
-
-* [ ] Navigation
-* [ ] Flight computer
-* [ ] Autonomous flight
-* [ ] Fault management
-
-## Phase 6 – Future
-
-* [ ] GUI
-* [ ] Networking
-* [ ] Multi-spacecraft simulation
-* [ ] Mission scripting
-* [ ] AI computer
+- [ ] Cargo management
+- [ ] Additional services
+- [ ] Testing
+- [ ] Documentation
 
 ---
 
 # Design Principles / 設計方針
-* To complete it as simply as possible
-* Microkernel-oriented architecture
-* Modular design
-* Hardware abstraction
-* Tick-driven simulation
-* Reliability over complexity
-* Safety-first development
-* Incremental implementation with small Git commits
-* できるだけシンプルに完成できるように
-* マイクロカーネル指向アーキテクチャ
-* モジュール式設計
-* ハードウェア抽象化
-* ティック駆動型シミュレーション
-* 複雑さよりも信頼性を重視
-* 安全性を最優先した開発
-* 小規模なGitコミットによる段階的な実装
+
+### English
+
+- Keep the project simple
+- Modular architecture
+- Hardware abstraction
+- Tick-driven simulation
+- Incremental development
+- Reliability over complexity
+
+### 日本語
+
+- できるだけシンプルに完成させる
+- モジュール化された設計
+- ハードウェア抽象化
+- ティック駆動型シミュレーション
+- 段階的な開発
+- 複雑さより信頼性を重視
 
 ---
 
